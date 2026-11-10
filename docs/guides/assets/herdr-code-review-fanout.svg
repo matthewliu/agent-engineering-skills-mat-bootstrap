@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" role="img" aria-labelledby="herdr-code-review-fanout-title herdr-code-review-fanout-desc" id="herdr-code-review-fanout-root">
+<title id="herdr-code-review-fanout-title">How herdr-code-review fans out and comes back</title><desc id="herdr-code-review-fanout-desc">After ce-work finishes, the lead gives the same change, requirements, and test results to five fresh reviewers. Each reviewer reports findings independently. The lead verifies each finding, applies the accepted fixes, and retests them. The pull request then waits for the owner&#x27;s review.</desc>
+<defs>
+      <style>#herdr-code-review-fanout-root { --paper:#f5f5f5;--ink:#2d3142;--muted:#4f5d75;--accent:#bf4520 }
+      #herdr-code-review-fanout-root { font-family: Arial,sans-serif; }
+      #herdr-code-review-fanout-root .title { font:30px Georgia,serif;fill:var(--ink) }
+      #herdr-code-review-fanout-root .label { font:600 18px Arial,sans-serif;fill:var(--ink) }
+      #herdr-code-review-fanout-root .name { font:600 15px Arial,sans-serif;fill:var(--ink) }
+      #herdr-code-review-fanout-root .text { font:14px Arial,sans-serif;fill:var(--muted) }
+      #herdr-code-review-fanout-root .cmd { font:600 13px ui-monospace,monospace;fill:var(--accent) }
+      #herdr-code-review-fanout-root .tag { font:13px ui-monospace,monospace;fill:var(--muted) }
+      #herdr-code-review-fanout-root .line { stroke:var(--muted);stroke-width:2;fill:none }</style><marker id="herdr-code-review-fanout-next" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#4f5d75"/></marker></defs>
+<rect width="960" height="640" fill="#f5f5f5"/>
+<text x="40" y="48" class="title">herdr-code-review: one change, five fresh reviewers.</text>
+<text x="40" y="78" class="text">Reviewers start with no memory of the build, so they can see what the builder missed.</text>
+<rect x="40" y="262" width="180" height="120" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="54" y="288" class="tag">01 / CE WORK</text>
+<text x="54" y="318" class="label">Finished change</text>
+<text x="54" y="344" class="text">Diff, plan, and</text>
+<text x="54" y="364" class="text">test results.</text>
+<rect x="240" y="262" width="180" height="120" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="254" y="288" class="tag">02 / LEAD</text>
+<text x="254" y="318" class="label">One packet</text>
+<text x="254" y="344" class="text">Same change and</text>
+<text x="254" y="364" class="text">requirements.</text>
+<path d="M220 322H238" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<rect x="480" y="120" width="210" height="64" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="494" y="146" class="name">Claude</text>
+<text x="494" y="168" class="tag">claude (Claude Code)</text>
+<path d="M420 322C450 322 450 152.0 478 152.0" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<path d="M690 152.0C716 152.0 716 220 738 220" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<rect x="480" y="198" width="210" height="64" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="494" y="224" class="name">GPT</text>
+<text x="494" y="246" class="tag">codex (Codex CLI)</text>
+<path d="M420 322C450 322 450 230.0 478 230.0" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<path d="M690 230.0C716 230.0 716 220 738 220" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<rect x="480" y="276" width="210" height="64" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="494" y="302" class="name">Grok</text>
+<text x="494" y="324" class="tag">grok (Grok Build)</text>
+<path d="M420 322C450 322 450 308.0 478 308.0" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<path d="M690 308.0C716 308.0 716 220 738 220" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<rect x="480" y="354" width="210" height="64" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="494" y="380" class="name">Muse</text>
+<text x="494" y="402" class="tag">muse (Muse Code)</text>
+<path d="M420 322C450 322 450 386.0 478 386.0" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<path d="M690 386.0C716 386.0 716 220 738 220" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<rect x="480" y="432" width="210" height="64" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="494" y="458" class="name">Gemini</text>
+<text x="494" y="480" class="tag">agy (Antigravity)</text>
+<path d="M420 322C450 322 450 464.0 478 464.0" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<path d="M690 464.0C716 464.0 716 220 738 220" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<text x="585" y="518" class="tag" text-anchor="middle">EACH REVIEWER REPORTS FINDINGS</text>
+<rect x="740" y="140" width="180" height="160" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="754" y="166" class="tag">03 / LEAD</text>
+<text x="754" y="196" class="label">Verify, fix</text>
+<text x="754" y="222" class="text">Rejects false alarms.</text>
+<text x="754" y="242" class="text">Fixes accepted ones.</text>
+<text x="754" y="262" class="text">Retests each fix.</text>
+<text x="754" y="282" class="text">Records gaps.</text>
+<path d="M830 300V346" class="line" marker-end="url(#herdr-code-review-fanout-next)"/>
+<rect x="740" y="348" width="180" height="120" rx="6" fill="#f5f5f5" stroke="#bf4520" stroke-width="2"/>
+<text x="754" y="374" class="tag">04 / PR</text>
+<text x="754" y="404" class="label">Ready for you</text>
+<text x="754" y="430" class="text">A review is not</text>
+<text x="754" y="450" class="text">merge permission.</text>
+<text x="40" y="560" class="text">Reviewers only report. They do not start more reviewers or change the code.</text>
+<text x="40" y="586" class="text">A large new change after review can need another full review.</text>
+<text x="40" y="612" class="cmd">Command: /herdr-code-review  (Matthew&#x27;s defaults run it after /ce-work)</text>
+</svg>

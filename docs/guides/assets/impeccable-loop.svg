@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" role="img" aria-labelledby="impeccable-loop-title impeccable-loop-desc" id="impeccable-loop-root">
+<title id="impeccable-loop-title">How Impeccable fits before and after the build</title><desc id="impeccable-loop-desc">Before code, Impeccable records product context and then deals direction cards: the dealt direction, challengers, Impeccable&#x27;s own pick, and the usual category style. You can re-roll safer or bolder, then lock one direction and its mockup. After the build, audit, critique, polish, and delight check and clean up the working interface.</desc>
+<defs>
+      <style>#impeccable-loop-root { --paper:#f5f5f5;--ink:#2d3142;--muted:#4f5d75;--accent:#bf4520 }
+      #impeccable-loop-root { font-family: Arial,sans-serif; }
+      #impeccable-loop-root .title { font:30px Georgia,serif;fill:var(--ink) }
+      #impeccable-loop-root .label { font:600 18px Arial,sans-serif;fill:var(--ink) }
+      #impeccable-loop-root .name { font:600 15px Arial,sans-serif;fill:var(--ink) }
+      #impeccable-loop-root .text { font:14px Arial,sans-serif;fill:var(--muted) }
+      #impeccable-loop-root .cmd { font:600 13px ui-monospace,monospace;fill:var(--accent) }
+      #impeccable-loop-root .tag { font:13px ui-monospace,monospace;fill:var(--muted) }
+      #impeccable-loop-root .line { stroke:var(--muted);stroke-width:2;fill:none }</style><marker id="impeccable-loop-next" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#4f5d75"/></marker></defs>
+<rect width="960" height="660" fill="#f5f5f5"/>
+<text x="40" y="48" class="title">Impeccable: mockups first, cleanup after the build.</text>
+<text x="40" y="78" class="text">You choose the look before agents write pages. Then the same skill checks the result.</text>
+<text x="40" y="124" class="tag">BEFORE CODE</text>
+<rect x="40" y="140" width="190" height="150" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="54" y="166" class="tag">01 / CONTEXT</text>
+<text x="54" y="194" class="cmd">/impeccable init</text>
+<text x="54" y="222" class="text">Asks about users,</text>
+<text x="54" y="242" class="text">brand, and tone.</text>
+<text x="54" y="262" class="text">Saves PRODUCT.md.</text>
+<path d="M230 215H258" class="line" marker-end="url(#impeccable-loop-next)"/>
+<rect x="260" y="140" width="440" height="150" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="274" y="166" class="tag">02 / DIRECTION CARDS (THE ROLL)</text>
+<rect x="274" y="180" width="96" height="64" rx="6" fill="#f5f5f5" stroke="#bf4520" stroke-width="2"/>
+<text x="322" y="204" class="tag" text-anchor="middle">THE ROLL</text>
+<text x="322" y="228" class="text" text-anchor="middle">Dealt lead</text>
+<rect x="378" y="180" width="96" height="64" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="426" y="204" class="tag" text-anchor="middle">CHALLENGER</text>
+<text x="426" y="228" class="text" text-anchor="middle">Other world</text>
+<rect x="482" y="180" width="96" height="64" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="530" y="204" class="tag" text-anchor="middle">PICK</text>
+<text x="530" y="228" class="text" text-anchor="middle">Impeccable&#x27;s</text>
+<rect x="586" y="180" width="96" height="64" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="634" y="204" class="tag" text-anchor="middle">STANDARD</text>
+<text x="634" y="228" class="text" text-anchor="middle">Usual style</text>
+<text x="274" y="272" class="text">Re-roll: plain, safer, or bolder. Steer in one line.</text>
+<path d="M700 215H728" class="line" marker-end="url(#impeccable-loop-next)"/>
+<rect x="730" y="140" width="190" height="150" rx="6" fill="#f5f5f5" stroke="#bf4520" stroke-width="2"/>
+<text x="744" y="166" class="tag">03 / YOU LOCK ONE</text>
+<text x="744" y="194" class="name">Approved direction</text>
+<text x="744" y="222" class="text">Mockup image, or</text>
+<text x="744" y="242" class="text">an HTML sketch.</text>
+<text x="744" y="262" class="text">Guides the build.</text>
+<path d="M825 290V336" class="line" marker-end="url(#impeccable-loop-next)"/>
+<rect x="560" y="338" width="360" height="70" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="574" y="364" class="tag">04 / BUILD</text>
+<text x="574" y="390" class="text">/ce-work and /impeccable build the pages.</text>
+<text x="40" y="364" class="tag">AFTER THE BUILD</text>
+<rect x="40" y="430" width="206" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="54" y="458" class="cmd">/impeccable audit</text>
+<text x="54" y="486" class="text">Accessibility, speed,</text>
+<text x="54" y="506" class="text">and phone layouts.</text>
+<path d="M246 482H260" class="line" marker-end="url(#impeccable-loop-next)"/>
+<rect x="262" y="430" width="206" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="276" y="458" class="cmd">/impeccable critique</text>
+<text x="276" y="486" class="text">UX review with</text>
+<text x="276" y="506" class="text">a heuristic score.</text>
+<path d="M468 482H482" class="line" marker-end="url(#impeccable-loop-next)"/>
+<rect x="484" y="430" width="206" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="498" y="458" class="cmd">/impeccable polish</text>
+<text x="498" y="486" class="text">Final quality pass</text>
+<text x="498" y="506" class="text">before shipping.</text>
+<path d="M690 482H704" class="line" marker-end="url(#impeccable-loop-next)"/>
+<rect x="706" y="430" width="206" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="720" y="458" class="cmd">/impeccable delight</text>
+<text x="720" y="486" class="text">Personality and</text>
+<text x="720" y="506" class="text">memorable touches.</text>
+<path d="M560 373H200C150 373 143 392 143 428" class="line" stroke-dasharray="5 4" marker-end="url(#impeccable-loop-next)"/>
+<text x="40" y="576" class="text">/impeccable live lets you click an element in the browser and compare variants of it.</text>
+<text x="40" y="602" class="text">Other fixes: layout, typeset, colorize, clarify, adapt, harden, quieter, bolder.</text>
+<text x="40" y="628" class="text">You still review every screen at phone and desktop sizes. A pretty mockup is not a tested app.</text>
+</svg>
