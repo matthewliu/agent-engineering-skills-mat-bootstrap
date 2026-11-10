@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 660" role="img" aria-labelledby="system-title system-desc" id="agent-workflow-system-root">
+<title id="system-title">Where your agents run</title><desc id="system-desc">A laptop runs the Herdr desktop and local agents. It can control a separate coding VPS. A phone uses SSH to each host over the approved private network. Code, transcripts, and credentials stay on each host unless sent elsewhere. Model providers receive prompts. GitHub receives pushed code. Render hosts approved releases. These are separate hosted services.</desc>
+<defs>
+      <style>#agent-workflow-system-root { --paper:#f5f5f5;--paper2:#ececec;--ink:#2d3142;--muted:#4f5d75;--soft:#5a6580;--accent:#bf4520;--link:#2e5aa8 }
+      #agent-workflow-system-root { color: var(--ink); font-family: Arial,sans-serif; }
+      #agent-workflow-system-root .name { font:600 17px Arial,sans-serif;fill:var(--ink) }
+      #agent-workflow-system-root .detail { font:14px Arial,sans-serif;fill:var(--muted) }
+      #agent-workflow-system-root .small { font:12px ui-monospace,monospace;fill:var(--soft) }
+      #agent-workflow-system-root .heading { font:30px Georgia,serif;fill:var(--ink) }
+      #agent-workflow-system-root .edge { fill:none;stroke:var(--muted);stroke-width:1.8 }
+      #agent-workflow-system-root .external { fill:none;stroke:var(--link);stroke-width:1.8 }</style><marker id="agent-workflow-system-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#4f5d75"/></marker><marker id="agent-workflow-system-arrow-link" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2e5aa8"/></marker></defs>
+<rect width="960" height="660" fill="#f5f5f5"/>
+<text x="32" y="40" class="heading">One view. Separate computers and accounts.</text>
+<rect x="24" y="64" width="912" height="288" rx="8" fill="#ececec" stroke="#4f5d75" stroke-dasharray="6 5"/>
+<text x="40" y="86" class="small">YOUR APPROVED DEVICES / TAILSCALE REACHABILITY + SSH AUTHORIZATION</text>
+<path class="edge" d="M248 164H360" marker-end="url(#agent-workflow-system-arrow)"/>
+<path class="edge" d="M148 128V112Q148 104 156 104H780Q788 104 788 112V128" marker-end="url(#agent-workflow-system-arrow)"/>
+<path class="edge" d="M460 256V216" marker-end="url(#agent-workflow-system-arrow)"/>
+<path class="edge" d="M560 292H780Q788 292 788 284V216" marker-end="url(#agent-workflow-system-arrow)"/>
+<path class="external" d="M160 352V432" marker-end="url(#agent-workflow-system-arrow-link)"/>
+<path class="external" d="M480 352V432" marker-end="url(#agent-workflow-system-arrow-link)"/>
+<path class="external" d="M800 352V432" stroke-dasharray="5 4" marker-end="url(#agent-workflow-system-arrow-link)"/>
+<text x="304" y="152" text-anchor="middle" class="small">LOCAL</text>
+<text x="602" y="118" class="small">SSH</text>
+<text x="472" y="240" class="small">SSH</text>
+<text x="600" y="280" class="small">SSH</text>
+<text x="176" y="400" class="small">PROMPTS</text>
+<text x="496" y="400" class="small">CODE</text>
+<text x="816" y="400" class="small">RELEASE</text>
+<rect x="48" y="128" width="200" height="88" rx="6" fill="#f5f5f5" stroke="#bf4520" stroke-width="2"/>
+<text x="64" y="158" class="name">Laptop: Herdr app</text><text x="64" y="182" class="detail">Your projects and tabs</text><text x="64" y="202" class="detail">Control local or VPS agents</text>
+<rect x="360" y="128" width="200" height="88" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="376" y="158" class="name">Laptop: core + agents</text><text x="376" y="182" class="detail">Repos, logs, credentials</text><text x="376" y="202" class="detail">Pauses when laptop sleeps</text>
+<rect x="688" y="128" width="224" height="88" rx="6" fill="#f5f5f5" stroke="#4f5d75" stroke-dasharray="5 4"/>
+<text x="704" y="158" class="name">Optional coding VPS</text><text x="704" y="182" class="detail">Own core, repos, credentials</text><text x="704" y="202" class="detail">Keeps working while online</text>
+<rect x="360" y="256" width="200" height="72" rx="6" fill="#f5f5f5" stroke="#4f5d75" stroke-dasharray="5 4"/>
+<text x="376" y="285" class="name">Optional phone</text><text x="376" y="309" class="detail">Control each approved host</text>
+<rect x="48" y="432" width="224" height="96" rx="6" fill="#f5f5f5" stroke="#2e5aa8"/>
+<text x="64" y="462" class="name">AI providers</text><text x="64" y="486" class="detail">Models process task context</text><text x="64" y="508" class="detail">Separate accounts and limits</text>
+<rect x="368" y="432" width="224" height="96" rx="6" fill="#f5f5f5" stroke="#2e5aa8"/>
+<text x="384" y="462" class="name">GitHub</text><text x="384" y="486" class="detail">Commits, PRs, and CI</text><text x="384" y="508" class="detail">No automatic live disk sync</text>
+<rect x="688" y="432" width="224" height="96" rx="6" fill="#f5f5f5" stroke="#2e5aa8"/>
+<text x="704" y="462" class="name">Render</text><text x="704" y="486" class="detail">Finished app and database</text><text x="704" y="508" class="detail">Release after approval</text>
+<text x="32" y="570" class="detail">Private networking limits reachability. It does not sandbox an authorized agent.</text>
+<text x="32" y="596" class="detail">Tailscale uses hosted coordination and may use encrypted relays.</text>
+<text x="32" y="622" class="detail">Separate hosts do not share files, conversations, packages, or permissions automatically.</text>
+</svg>
