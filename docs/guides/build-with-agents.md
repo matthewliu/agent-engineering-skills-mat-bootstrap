@@ -4,6 +4,45 @@ A step-by-step runbook from Matthew for friends who are new to coding. You can a
 
 **Last checked: 10 November 2026.** Product names, plans, commands, and access rules can change. The setup agent must check the current official instructions before it installs anything. This guide describes a workflow. It does not certify these tools as secure.
 
+## Explain it like I'm five: how software gets built
+
+Building an app is like opening a restaurant.
+
+1. **Find out what people want.** Look at other restaurants. Ask what is missing. This is **research**.
+2. **Choose the menu.** Decide which dishes to serve first and which to leave out. This is the **product scope**.
+3. **Draw the plans.** An architect shows where the kitchen, tables, and storage go, and in which order to build them. This is the **engineering plan**.
+4. **Build it.** Builders make each part. Some work at the same time in separate rooms. This is **implementation**.
+5. **Inspect it.** A fresh inspector checks the work before guests arrive. This is **code review and testing**.
+6. **Open the doors.** You decide when guests come in. You watch for problems after you open. This is **merge and deploy**.
+
+The parts of an app match the parts of a restaurant:
+
+| Restaurant | App | Example in this guide |
+| --- | --- | --- |
+| Dining room | **Frontend**: the screens people see and tap. | A React web page. |
+| Kitchen | **Backend**: the code that applies the rules and does the work. | A Python server. |
+| Order slip | **API**: a fixed way to ask the kitchen for something. | "Save this habit for this user." |
+| Pantry | **Database**: where records are kept. | PostgreSQL. |
+| Storage shed | **File storage**: large files such as images and videos. | Cloudflare R2. |
+| Street address | **Hosting and domain**: where guests find the restaurant. | Render. |
+
+In this guide, coding agents are the builders and inspectors. You are the owner. You choose the menu, approve the plans, and decide when the doors open.
+
+## Skill libraries at a glance
+
+A **skill** is a reusable set of instructions for an agent. These libraries give agents the steps above as commands. Section 8 explains how to install them.
+
+| Library | What it does | Where it fits |
+| --- | --- | --- |
+| [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin) | Plans, builds, reviews, and ships code. Commands include `/ce-brainstorm`, `/ce-plan`, `/ce-work`, `/ce-code-review`, and `/ce-commit-push-pr`. | Plan, build, review |
+| [Impeccable](https://github.com/pbakaus/impeccable) | Design. Makes mockup directions for you to choose from before code. After the build, `audit`, `polish`, and `delight` clean up the interface. | Scope, build, review |
+| [Matthew's public skills](https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap) | `/herdr-research`, `/herdr-code-review`, `/feature-research`, `/research-synthesis`, `/product-spec`, `/architecture-review`, `/security-audit`, and his engineering preferences. No invitation is needed. | Research, scope, review |
+| [Diagram Design](https://github.com/cathrynlavery/diagram-design) | System diagrams, data flows, data models, and charts. | Plan, documentation |
+| [Cloudflare security audit](https://github.com/cloudflare/security-audit-skill) | Source and dependency security review. It does not certify the result as safe. | Review |
+| [Herdr](https://herdr.dev/) | Not a skill. A desktop app and background service that shows and runs many agents across projects and machines. | Every step |
+
+![The six workflow steps, with the commands Matthew uses in each step.](assets/workflow-commands.svg)
+
 ## Executive summary
 
 You can describe a product, make the key decisions, and ask coding agents to build and test it. You still own the requirements, the budget, the permissions, and the decision to publish.
@@ -45,7 +84,7 @@ You can pass this whole file to your setup agent. You do not need to complete ev
 - [Herdr, layouts, and skills](#6-install-herdr-and-open-a-test-project)
 - [Research, scope, planning, and building](#11-use-this-development-sequence)
 - [Code review and PRs](#15-review-test-and-write-a-readable-pr)
-- [Secrets, login, and Render hosting](#16-keep-secrets-out-of-chat-and-source-code)
+- [Secrets, login, and hosting](#16-keep-secrets-out-of-chat-and-source-code)
 - [Optional coding VPS](#19-optional-rent-a-coding-vps)
 - [Private network and phone access](#20-understand-tailscale-and-ssh)
 - [Finish-line checklist](#24-your-first-project-finish-line)
@@ -54,7 +93,7 @@ You can pass this whole file to your setup agent. You do not need to complete ev
 
 The arrows describe the proposed setup. They do not grant access. SSH and tailnet policy must authorize each remote connection. The service arrows show outbound task data or approved code publication. They do not mean that every host receives production credentials.
 
-The rest of the guide works as a standalone Markdown file. The diagram is an optional companion asset. Send the SVG with the file, or share the GitHub page, to include it.
+The rest of the guide works as a standalone Markdown file. The diagrams are optional companion assets in the `assets` folder. Send that folder with the file, or share the GitHub page, to include them.
 
 ## 1. Give this prompt to your setup agent
 
@@ -109,7 +148,7 @@ Herdr is useful when you need one view of several projects, models, and machines
 
 A useful first project is a habit tracker with fake users. Avoid payments, trading, medical records, or access to your main email account for the first exercise.
 
-Start with one lead agent. Add a second model for research or review. Buy more capacity when you regularly reach a limit or need a tested benefit. Matthew's priority order is Claude Code and Codex first, then Muse and Grok. He uses Gemini through Antigravity least. He likes its models but finds its harness, the software that gives a model tools and manages its session, less convenient. This is his experience, not a universal ranking. Choose the current plans that cover your actual CLI use. For heavy daily use, budget seriously for the current Max, Ultra, or equivalent high-usage plan that includes your chosen tools. A low limit can interrupt a useful work session. Check the current entitlement before paying. Buying every provider plan is not a prerequisite.
+Start with one lead agent. Add a second model for research or review. Buy more capacity when you regularly reach a limit or need a tested benefit. Matthew's priority order is Claude Code and Codex first, then Muse and Grok. Grok runs in xAI's own Grok Build CLI, `grok`. Gemini runs in Google's Antigravity CLI, `agy`. These are separate tools. Matthew uses Gemini least. He likes its models but finds the Antigravity harness, the software that gives a model tools and manages its session, less convenient. This is his experience, not a universal ranking. Choose the current plans that cover your actual CLI use. For heavy daily use, budget seriously for the current Max, Ultra, or equivalent high-usage plan that includes your chosen tools. A low limit can interrupt a useful work session. Check the current entitlement before paying. Buying every provider plan is not a prerequisite.
 
 | Cost | What to check before paying |
 | --- | --- |
@@ -148,7 +187,7 @@ Install these on the laptop. Repeat the relevant CLI installs and sign-ins on th
 | Antigravity, `agy` | Runs Google's models in this workflow. | Use [Google's CLI setup](https://antigravity.google/docs/install?tab=cli). Check `agy --help` and `agy models`. Verify the selected model works on your account. The separate Gemini CLI is not a substitute for verified Antigravity access. |
 | Herdr app and core | Shows and runs the agents. | Use [Herdr download](https://herdr.dev/download/). Check `herdr-app --version` and `hc --version`. |
 | Tailscale | Gives your devices private network access. | Use [official downloads](https://tailscale.com/download). Sign in to your own network. |
-| Python | Runs the preferred backend. | Choose a supported stable version that the project and host support. Check `python3 --version`. Do not replace the OS-managed Python. |
+| Python | Runs Matthew's preferred backend. Skip it if your project uses another language. | Choose a supported stable version that the project and host support. Check `python3 --version`. Do not replace the OS-managed Python. |
 | Node.js and npm | Run frontend tools and some installers. | Install a supported, patched long-term support (LTS) release using the official instructions. Check `node --version` and `npm --version`. Follow project version requirements. |
 | Render CLI, `render` | Optional terminal control of hosting. | Use [Render CLI setup](https://render.com/docs/cli), then `render login`. The dashboard also works. |
 
@@ -277,13 +316,7 @@ Use the [gallery](https://herdr.dev/gallery/) to compare screenshots. Names and 
 
 A **skill** is a reusable set of instructions for an agent. A **plugin** can bundle skills, tools, and hooks. A **hook** runs code when an event occurs. Installing a skill does not give the agent a new subscription or guarantee that it follows the instructions.
 
-| Skill pack | What you use it for |
-| --- | --- |
-| [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin) | Brainstorming, task plans, implementation, review, and lessons from completed work. Common commands include `/ce-plan`, `/ce-work`, and `/ce-code-review`. |
-| [Impeccable](https://github.com/pbakaus/impeccable) | Initial visual directions, interface design, critique, and polish. |
-| [Diagram Design](https://github.com/cathrynlavery/diagram-design) | System diagrams, data flows, data models, and charts. Use its default style first. |
-| [Cloudflare security audit](https://github.com/cloudflare/security-audit-skill) | Source and dependency security review. It does not patch every machine or certify the result as safe. |
-| [Matthew's public bootstrap skills](https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap) | `/herdr-research`, `/herdr-code-review`, `/product-spec`, `/research-synthesis`, and engineering preferences. No private-repo invitation is required. |
+The [skill libraries at a glance](#skill-libraries-at-a-glance) table near the top lists each pack, its link, and where it fits. Use Diagram Design's default style first.
 
 The setup agent should follow each pack's current installation instructions for the selected host. The Compound Engineering README has separate instructions for Claude Code, Codex, and Cursor. Do not copy a Claude-only plugin install into Codex and assume it worked.
 
@@ -384,7 +417,9 @@ Say:
 Use /herdr-research habit-tracker. Research options for a simple habit tracker for my friends. Use Standard depth. First ask only questions that change the decision. Keep this agent as lead. Start fresh available models in separate visible tabs. Give every worker the same full question, constraints, and sources. Save the reports in this project's docs/work/habit-tracker/research folder. Verify the evidence, compare disagreements, and recommend the best option. Do not implement yet.
 ```
 
-Matthew's usual roster is Claude, Codex, Grok, Muse, and Gemini through Antigravity. Two available models can still be useful. Record actual model identities and missing coverage. Each worker independently researches the full question. The lead coordinates and verifies material claims. It is not another independent vote.
+![herdr-research: the lead gives one brief to five fresh workers, then verifies their reports and writes one cited recommendation.](assets/herdr-research-fanout.svg)
+
+Matthew's usual roster is Claude in Claude Code, GPT in Codex, Grok in Grok Build, Muse in Muse Code, and Gemini in Antigravity. Each model runs in its own CLI. Two available models can still be useful. Record actual model identities and missing coverage. Each worker independently researches the full question. The lead coordinates and verifies material claims. It is not another independent vote.
 
 The lead must defend its recommendation. It can reject the majority if a stronger source or a real test proves the minority right. Do not average conflicting conclusions or invent a compromise to make every model happy.
 
@@ -394,7 +429,34 @@ Read at least the executive summary, comparison, recommendation, security limits
 
 Use `/product-spec` when the intended users, behavior, or priorities are still unclear. The interview should settle what is in this version, what is excluded, and what success means. If that is already clear, proceed to planning.
 
-For a UI, start with Impeccable before building many pages. Ask for two or three small visual directions using the same content. Choose one. Review it at desktop and phone sizes. Avoid generic prompts such as "copy the Linear UI." Ask for a visual direction that fits your users and content. Do not default to Lato or Roboto because an agent reaches for them repeatedly. Choose typography deliberately. Avoid cards nested inside cards, decorative gradients without purpose, and repetitive dashboard boxes. Impeccable helps with those decisions; you still need to review the result. Then define detailed pages, error states, loading states, empty states, and accessibility needs. Keep fonts, colors, spacing, and motion in one design-token source. Keep the project's required `PRODUCT.md` up to date. Save the chosen visual rules in `DESIGN.md`.
+For a UI, use Impeccable to make mockups before agents build many pages. Then use it again to clean up the finished pages.
+
+![Impeccable before code: context, direction cards, and a locked direction. After the build: audit, critique, polish, and delight.](assets/impeccable-loop.svg)
+
+An example for the habit tracker, based on Impeccable 4.8.2:
+
+1. Run `/impeccable init`. It asks about your users, brand, and tone. It saves the answers in `PRODUCT.md`.
+2. Ask for a screen, for example `/impeccable design the habit tracker home screen`. Impeccable "rolls" design directions, like dealing cards. The roll keeps each run from landing on the same default look. A decision page in the browser shows the cards:
+   - **The roll**: the direction that the dice put first.
+   - **Challengers**: directions from other design worlds. Impeccable rates each challenger against the roll. A weaker challenger can still lend one strength to the roll.
+   - **Impeccable's pick**: its own top choice, when that differs from the roll.
+   - **The category standard**: the usual look for this type of app, done well. Choose it when a familiar look is what you want.
+3. If no card fits, re-roll. Ask for plain (a new hand), safer (more familiar), or bolder (less familiar). You can add a one-line steer, such as "warmer and less corporate."
+4. Lock one card. If image generation is available, the card has a mockup image. If not, it has an HTML sketch of the first screen. The locked card guides the build.
+5. Review the locked direction at desktop and phone sizes before agents build the pages.
+
+After the pages work, use Impeccable to clean them up:
+
+| Command | What it does |
+| --- | --- |
+| `/impeccable audit` | Checks accessibility, speed, and phone layouts. |
+| `/impeccable critique` | Gives a UX review with a heuristic score. |
+| `/impeccable polish` | Makes a final quality pass before shipping. |
+| `/impeccable delight` | Adds personality and memorable touches. |
+| `/impeccable live` | Lets you click one element in the browser and compare variants of it. |
+| `/impeccable document` | Writes `DESIGN.md` from the finished code. |
+
+Avoid generic prompts such as "copy the Linear UI." Ask for a visual direction that fits your users and content. Do not default to Lato or Roboto because an agent reaches for them repeatedly. Choose typography deliberately. Avoid cards nested inside cards, decorative gradients without purpose, and repetitive dashboard boxes. Impeccable helps with those decisions; you still need to review the result. Then define detailed pages, error states, loading states, empty states, and accessibility needs. Keep fonts, colors, spacing, and motion in one design-token source. Keep the project's required `PRODUCT.md` up to date. Save the chosen visual rules in `DESIGN.md`.
 
 You can also use Claude's current design product if your account has it. Verify its official availability and export options first. It is an optional design tool, not a required CLI. A visual mockup still needs working authentication, APIs, data, and tests.
 
@@ -459,7 +521,7 @@ Ask Diagram Design to show which data moves between the client, API, and databas
 
 ### APIs, CLIs, and MCP use the same application rules
 
-FastAPI can describe request and response schemas and publish an OpenAPI specification. That gives a CLI or another client a documented contract. A **CLI** can turn a task such as recording a habit into a command. An **MCP server** exposes selected tools through Model Context Protocol so a compatible agent can call them.
+If you use FastAPI, it can describe request and response schemas and publish an OpenAPI specification. That gives a CLI or another client a documented contract. A **CLI** can turn a task such as recording a habit into a command. An **MCP server** exposes selected tools through Model Context Protocol so a compatible agent can call them.
 
 These interfaces should share the same application rules or call the same authorized API. They should not implement three different versions of the business logic. Stable operation names and typed payloads make integration easier. FastAPI does not automatically create a safe CLI or MCP server. Each still needs authentication, per-user authorization, validation, error handling, and tests. Do not expose every API operation as an agent tool by default. [FastAPI features](https://fastapi.tiangolo.com/features/).
 
@@ -467,9 +529,12 @@ Matthew has started a separate task in Agentic Bootstrap to improve this scaffol
 
 ### Matthew's usual stack
 
-- **Python** for backend code. Matthew knows it well and values its development speed and library support. Rust, Go, and TypeScript can also fit. Choose based on the product, team, hosting, and dependencies.
+This is Matthew's preference, not a requirement. You do not have to use Python or FastAPI. He uses them because he knows them well and can build fast with them. Agents can build in most mainstream languages. Choose the stack that fits your product, your skills, and your host.
+
+- **Python** for backend code. Matthew values its development speed and library support. Rust, Go, and TypeScript can also fit. Choose based on the product, team, hosting, and dependencies.
 - **FastAPI** for a documented, API-first backend. Typed request models can make later agent integrations easier. They do not supply authorization automatically.
-- **PostgreSQL** for the main database. Keep development, preview, and production data separate.
+- **PostgreSQL** is Matthew's preferred database. Use it for the main records, such as users, habits, and check-ins. Keep development, preview, and production data separate.
+- **Cloudflare** for static files such as images and videos. Matthew prefers [Cloudflare R2](https://developers.cloudflare.com/r2/) to store files. [Cloudflare Images](https://developers.cloudflare.com/images/) and [Cloudflare Stream](https://developers.cloudflare.com/stream/) can resize images and stream video. Alternatives include [Amazon S3](https://aws.amazon.com/s3/), Google Cloud Storage, and your host's own storage. Keep large files in file storage, not in the database. Save each file's address in the database.
 - **React** for browser interfaces. JavaScript and TypeScript are useful for interaction, animations, and browser behavior. A full JavaScript stack is a valid alternative.
 - **React Native with React Native Web**, often using Expo, when a shared mobile and web codebase is justified. Some features still need platform-specific code, testing, and store releases. Discuss this before assuming a native app.
 
@@ -514,6 +579,8 @@ Your app should live in your own repo. Matthew is happy to help and can be invit
 ## 15. Review, test, and write a readable PR
 
 After `/ce-work`, use **Herdr code review**, not Herdr research, to examine the implementation. Keep CE's required checks. If the workflow must review before publication, have an outer lead use CE's supported `mode:return-to-caller`, then own review and delivery. Do not silently bypass CE's review requirements.
+
+![herdr-code-review: the lead gives the finished change to five fresh reviewers, then verifies their findings and retests accepted fixes.](assets/herdr-code-review-fanout.svg)
 
 The personal defaults can start `/herdr-code-review` automatically after CE work. Fresh models receive the same change, requirements, and test evidence. They report independently. The lead verifies findings, applies accepted fixes within its authority, and tests the changed result. It does not count the builder's own confidence as an independent review.
 
@@ -619,9 +686,9 @@ Console labels can change. The agent should use current Google instructions if t
 
 Google uses the redirect URL to return the login response. A wrong URL causes an error. A maintained library helps validate the returned tokens and tie the response to the login session. Configure PKCE where applicable. PKCE helps stop a stolen login code from being used by another client. Corporate administrators may restrict third-party apps. Do not work around their policy. [Google web-server OAuth guide](https://developers.google.com/identity/protocols/oauth2/web-server).
 
-## 18. Deploy the finished app on Render
+## 18. Deploy the finished app (Render preferred)
 
-The coding VPS is your development computer. Render is a suggested home for the app your users visit. You can use Render without renting a coding VPS.
+The coding VPS is your development computer. Render is Matthew's preferred home for the app your users visit. It is not the only option. You can use Render without renting a coding VPS.
 
 | Place | What runs there | What happens when your laptop closes |
 | --- | --- | --- |
@@ -630,11 +697,15 @@ The coding VPS is your development computer. Render is a suggested home for the 
 | Coding VPS | Development agents, builds, and test environments on a rented Linux machine. | Work can continue on the server. |
 | Production hosting | The released app and persistent data used by real people. | Users can keep using it independently of your laptop. |
 
-Render and Railway manage much of the hosting infrastructure. AWS offers several levels of managed services and infrastructure. It usually requires more choices and operating knowledge. These are deployment options, not synonyms for a coding VPS. Start with Render unless the app has a reason to choose another platform. Never run production on the same unrestricted development account just because it is convenient.
+Render, Railway, Fly.io, and similar platforms manage much of the hosting infrastructure. AWS and Google Cloud offer several levels of managed services and infrastructure. They usually require more choices and operating knowledge. These are deployment options, not synonyms for a coding VPS.
+
+Matthew prefers Render after Railway's October 2026 security incident. Railway reported unauthorized access to internal Railway systems. It told all customers to revoke and replace sensitive credentials stored on Railway before 21 October 2026. [Railway, 23 October 2026](https://railway.com/changelog/2026-10-23-october-21-security-incident). Any host can have an incident. Wherever you deploy, keep each secret scoped to one service and know how to replace it quickly.
+
+Start with Render unless the app has a reason to choose another platform. Never run production on the same unrestricted development account just because it is convenient.
 
 Create your own Render account and workspace. Review the total monthly cost before selecting paid resources. Connect only the GitHub repos Render needs. Prefer a staging or preview app before production.
 
-For a basic FastAPI service, the agent should:
+For a basic FastAPI service, the agent should do the steps below. For another language, follow Render's guide for that language.
 
 1. Push the reviewed code to your repo.
 2. Create a Render Web Service for the intended branch and project folder.
@@ -650,7 +721,7 @@ Then configure the rest of your app:
 - Create a PostgreSQL database in the intended region. Use its internal connection where supported. Restrict external access.
 - Put server secrets in Render's Environment settings. Keep secret values out of a committed `render.yaml`.
 - Keep staging and production databases and credentials separate.
-- Use durable storage for uploads. A temporary service filesystem can lose files during a replacement or deploy.
+- Use durable file storage for uploads, such as Cloudflare R2 or Amazon S3. A temporary service filesystem can lose files during a replacement or deploy.
 - Review the HTTPS domain, Google callback URLs, cookies, and allowed frontend origins. CORS is a browser access rule, not user authorization.
 - Back up the database and test a restore with dummy data. Confirm the selected plan's retention and recovery features.
 - Test a deployment rollback. Database changes may need a separate recovery plan; redeploying old code does not undo a migration.

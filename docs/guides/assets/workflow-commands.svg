@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 912" role="img" aria-labelledby="workflow-commands-title workflow-commands-desc" id="workflow-commands-root">
+<title id="workflow-commands-title">The six steps and the commands Matthew uses</title><desc id="workflow-commands-desc">Each of the six workflow steps lists the skill commands Matthew uses in it. Research uses herdr-research, feature-research, and research-synthesis. Scope and design use product-spec and Impeccable. Planning uses ce-plan, architecture-review, and Diagram Design. Building uses ce-work, worktrees, and Impeccable. Review uses herdr-code-review, Impeccable audit and polish, the Cloudflare security audit, and ce-commit-push-pr. The owner approves the release.</desc>
+<defs>
+      <style>#workflow-commands-root { --paper:#f5f5f5;--ink:#2d3142;--muted:#4f5d75;--accent:#bf4520 }
+      #workflow-commands-root { font-family: Arial,sans-serif; }
+      #workflow-commands-root .title { font:30px Georgia,serif;fill:var(--ink) }
+      #workflow-commands-root .label { font:600 18px Arial,sans-serif;fill:var(--ink) }
+      #workflow-commands-root .name { font:600 15px Arial,sans-serif;fill:var(--ink) }
+      #workflow-commands-root .text { font:14px Arial,sans-serif;fill:var(--muted) }
+      #workflow-commands-root .cmd { font:600 13px ui-monospace,monospace;fill:var(--accent) }
+      #workflow-commands-root .tag { font:13px ui-monospace,monospace;fill:var(--muted) }
+      #workflow-commands-root .line { stroke:var(--muted);stroke-width:2;fill:none }</style><marker id="workflow-commands-next" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#4f5d75"/></marker></defs>
+<rect width="960" height="912" fill="#f5f5f5"/>
+<text x="40" y="48" class="title">Six steps. The commands Matthew uses in each one.</text>
+<text x="40" y="78" class="text">Orange text is what you or the lead agent types. You make the decisions between steps.</text>
+<rect x="40" y="112" width="230" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="56" y="140" class="tag">01 / RESEARCH</text>
+<text x="56" y="172" class="label">What is possible?</text>
+<rect x="290" y="112" width="630" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="306" y="142" class="cmd">/herdr-research &lt;topic&gt;</text>
+<text x="560" y="142" class="text">Five models research one question.</text>
+<text x="306" y="168" class="cmd">/feature-research</text>
+<text x="560" y="168" class="text">One agent writes a cited report.</text>
+<text x="306" y="194" class="cmd">/research-synthesis</text>
+<text x="560" y="194" class="text">Combines reports that already exist.</text>
+<path d="M155 216V231" class="line" marker-end="url(#workflow-commands-next)"/>
+<rect x="40" y="232" width="230" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="56" y="260" class="tag">02 / SCOPE + DESIGN</text>
+<text x="56" y="292" class="label">What do we want?</text>
+<rect x="290" y="232" width="630" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="306" y="262" class="cmd">/product-spec</text>
+<text x="560" y="262" class="text">Interview, then one feature spec.</text>
+<text x="306" y="288" class="cmd">/impeccable init</text>
+<text x="560" y="288" class="text">Records product context in PRODUCT.md.</text>
+<text x="306" y="314" class="cmd">/impeccable &lt;page&gt;</text>
+<text x="560" y="314" class="text">Mockup directions you choose from.</text>
+<path d="M155 336V351" class="line" marker-end="url(#workflow-commands-next)"/>
+<rect x="40" y="352" width="230" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="56" y="380" class="tag">03 / PLAN</text>
+<text x="56" y="412" class="label">How do we build it?</text>
+<rect x="290" y="352" width="630" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="306" y="382" class="cmd">/ce-plan</text>
+<text x="560" y="382" class="text">Ordered tasks, owners, and tests.</text>
+<text x="306" y="408" class="cmd">/architecture-review</text>
+<text x="560" y="408" class="text">Checks a larger design first.</text>
+<text x="306" y="434" class="cmd">Diagram Design</text>
+<text x="560" y="434" class="text">Draws data flows and data models.</text>
+<path d="M155 456V471" class="line" marker-end="url(#workflow-commands-next)"/>
+<rect x="40" y="472" width="230" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="56" y="500" class="tag">04 / BUILD</text>
+<text x="56" y="532" class="label">Build and test.</text>
+<rect x="290" y="472" width="630" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="306" y="502" class="cmd">/ce-work</text>
+<text x="560" y="502" class="text">Builds and tests the approved plan.</text>
+<text x="306" y="528" class="cmd">git worktree</text>
+<text x="560" y="528" class="text">One branch and folder per builder.</text>
+<text x="306" y="554" class="cmd">/impeccable &lt;page&gt;</text>
+<text x="560" y="554" class="text">Builds the chosen design direction.</text>
+<path d="M155 576V591" class="line" marker-end="url(#workflow-commands-next)"/>
+<rect x="40" y="592" width="230" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="56" y="620" class="tag">05 / REVIEW + PR</text>
+<text x="56" y="652" class="label">What did we miss?</text>
+<rect x="290" y="592" width="630" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="306" y="618" class="cmd">/herdr-code-review</text>
+<text x="560" y="618" class="text">Fresh models review the same change.</text>
+<text x="306" y="640" class="cmd">/impeccable audit, polish</text>
+<text x="560" y="640" class="text">Checks and cleans up the built UI.</text>
+<text x="306" y="662" class="cmd">cloudflare-security-audit</text>
+<text x="560" y="662" class="text">Source and dependency security.</text>
+<text x="306" y="684" class="cmd">/ce-commit-push-pr</text>
+<text x="560" y="684" class="text">Commits, pushes, and opens the PR.</text>
+<path d="M155 696V711" class="line" marker-end="url(#workflow-commands-next)"/>
+<rect x="40" y="712" width="230" height="104" rx="6" fill="#f5f5f5" stroke="#bf4520" stroke-width="2"/>
+<text x="56" y="740" class="tag">06 / APPROVED RELEASE</text>
+<text x="56" y="772" class="label">Merge, then deploy.</text>
+<rect x="290" y="712" width="630" height="104" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="306" y="742" class="cmd">You approve</text>
+<text x="560" y="742" class="text">Read the PR. Try the preview.</text>
+<text x="306" y="768" class="cmd">Deploy from main</text>
+<text x="560" y="768" class="text">Render is Matthew&#x27;s preferred host.</text>
+<text x="306" y="794" class="cmd">PROJECT-STATUS.md</text>
+<text x="560" y="794" class="text">Records the release and next step.</text>
+<text x="40" y="852" class="text">Not every change needs every command. A small fix can skip research and the product spec.</text>
+<text x="40" y="878" class="text">Agents can prepare each step. You approve the scope, the plan, the PR, and the release.</text>
+</svg>
