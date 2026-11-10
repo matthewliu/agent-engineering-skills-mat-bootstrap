@@ -11,8 +11,8 @@ Anyone can read or clone this public repo. You cannot push to it without a separ
 Ask your setup agent to inspect the installer and your existing skills first. Use your own accounts and directories. Do not install from a search advertisement or an unrelated package with the same name.
 
 ```bash
-git clone https://github.com/matthewliu/agent-engineering-skills-mat-bootstrap.git
-cd agent-engineering-skills-mat-bootstrap
+git clone https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap.git
+cd agent-engineering-skills-matt-bootstrap
 bash scripts/install.sh --dry-run
 bash scripts/install.sh
 ```
