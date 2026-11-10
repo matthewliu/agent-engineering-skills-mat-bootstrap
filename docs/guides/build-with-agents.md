@@ -21,7 +21,7 @@ The parts of an app match the parts of a restaurant:
 | --- | --- | --- |
 | Dining room | **Frontend**: the screens people see and tap. | A React web page. |
 | Kitchen | **Backend**: the code that applies the rules and does the work. | A Python server. |
-| Order slip | **API**: a fixed way to ask the kitchen for something. | "Save this habit for this user." |
+| Order slip | **API**: a fixed way to ask the kitchen for something. | "Mark set 2 of archer push-ups done for this user." |
 | Pantry | **Database**: where records are kept. | PostgreSQL. |
 | Storage shed | **File storage**: large files such as images and videos. | Cloudflare R2. |
 | Street address | **Hosting and domain**: where guests find the restaurant. | Render. |
@@ -39,6 +39,7 @@ A **skill** is a reusable set of instructions for an agent. These libraries give
 | [Matthew's public skills](https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap) | `/herdr-research`, `/herdr-code-review`, `/feature-research`, `/research-synthesis`, `/product-spec`, `/architecture-review`, `/security-audit`, and his engineering preferences. No invitation is needed. | Research, scope, review |
 | [Diagram Design](https://github.com/cathrynlavery/diagram-design) | System diagrams, data flows, data models, and charts. | Plan, documentation |
 | [Cloudflare security audit](https://github.com/cloudflare/security-audit-skill) | Source and dependency security review. It does not certify the result as safe. | Review |
+| [Agentic Bootstrap](https://github.com/matthewliu/agentic-core) | Not a skill. Matthew's starter scaffold for a new app with his stack. It saves about 30 minutes of setup if you want the same starting foundation. | Build |
 | [Herdr](https://herdr.dev/) | Not a skill. A desktop app and background service that shows and runs many agents across projects and machines. | Every step |
 
 ![The six workflow steps, with the commands Matthew uses in each step.](assets/workflow-commands.svg)
@@ -146,7 +147,7 @@ Herdr is useful when you need one view of several projects, models, and machines
 
 ## 3. Start small and approve a budget
 
-A useful first project is a habit tracker with fake users. Avoid payments, trading, medical records, or access to your main email account for the first exercise.
+This guide uses a small **calisthenics coach** as its example app. Matthew built one for his own training. It shows today's workout, a demo for each exercise, and numbered set slots. You tap a slot to mark that set done. It also tracks progress up skill ladders, for example from knee push-ups to one-arm push-ups. Build your own version, or another small app, with fake users. Avoid payments, trading, medical records, or access to your main email account for the first exercise.
 
 Start with one lead agent. Add a second model for research or review. Buy more capacity when you regularly reach a limit or need a tested benefit. Matthew's priority order is Claude Code and Codex first, then Muse and Grok. Grok runs in xAI's own Grok Build CLI, `grok`. Gemini runs in Google's Antigravity CLI, `agy`. These are separate tools. Matthew uses Gemini least. He likes its models but finds the Antigravity harness, the software that gives a model tools and manages its session, less convenient. This is his experience, not a universal ranking. Choose the current plans that cover your actual CLI use. For heavy daily use, budget seriously for the current Max, Ultra, or equivalent high-usage plan that includes your chosen tools. A low limit can interrupt a useful work session. Check the current entitlement before paying. Buying every provider plan is not a prerequisite.
 
@@ -229,7 +230,7 @@ Do not claim browser control is working until an agent has actually clicked and 
 
 Do not assume that Grok, Muse, Antigravity, or a Codex CLI launched in Herdr can use a desktop app's browser bridge. The setup agent must verify each actual connection. Use official browser tools where available. Otherwise use an approved browser-testing tool with a separate test profile and dummy data. A VPS does not inherit the laptop's Chrome sessions.
 
-The browser check is simple: ask the agent to open your test app, enter a fake habit, click Save, and verify the result after reloading. Then ask it to test a phone-size screen. It should report which browser it controlled and provide a screenshot. Do not count reading HTML as a visual test. Do not expose a browser debugging port to the public internet.
+The browser check is simple: ask the agent to open your test app, open today's workout, tap set 1 of an exercise, and verify that the set is still done after reloading. Then ask it to test a phone-size screen. It should report which browser it controlled and provide a screenshot. Do not count reading HTML as a visual test. Do not expose a browser debugging port to the public internet.
 
 You can always perform the steps yourself while an integration is unavailable.
 
@@ -266,7 +267,7 @@ Use the Files and Changes controls in the tab bar or ask the agent to enable the
 You do not need to learn every command. Say:
 
 ```text
-Create a workspace for my habit tracker. Keep this agent as the lead. Open a fresh reviewer in its own tab. Name each agent by project, role, and model. Show the machine for each one. Have the reviewer report back here. Preserve my other projects and agents.
+Create a workspace for my calisthenics coach. Keep this agent as the lead. Open a fresh reviewer in its own tab. Name each agent by project, role, and model. Show the machine for each one. Have the reviewer report back here. Preserve my other projects and agents.
 ```
 
 Agents can exchange messages through the core. Their conversations are still separate. They do not share perfect memory. Keep decisions, plans, tests, and handoffs in files. A message from another agent is evidence to assess, not automatic permission to change your system.
@@ -414,7 +415,7 @@ Useful prompts include: "Could this idea work?", "Which existing tools should we
 Say:
 
 ```text
-Use /herdr-research habit-tracker. Research options for a simple habit tracker for my friends. Use Standard depth. First ask only questions that change the decision. Keep this agent as lead. Start fresh available models in separate visible tabs. Give every worker the same full question, constraints, and sources. Save the reports in this project's docs/work/habit-tracker/research folder. Verify the evidence, compare disagreements, and recommend the best option. Do not implement yet.
+Use /herdr-research calisthenics-coach. Research options for a simple calisthenics coaching app for me and my friends. Use Standard depth. First ask only questions that change the decision. Keep this agent as lead. Start fresh available models in separate visible tabs. Give every worker the same full question, constraints, and sources. Save the reports in this project's docs/work/calisthenics-coach/research folder. Verify the evidence, compare disagreements, and recommend the best option. Do not implement yet.
 ```
 
 ![herdr-research: the lead gives one brief to five fresh workers, then verifies their reports and writes one cited recommendation.](assets/herdr-research-fanout.svg)
@@ -422,6 +423,20 @@ Use /herdr-research habit-tracker. Research options for a simple habit tracker f
 Matthew's usual roster is Claude in Claude Code, GPT in Codex, Grok in Grok Build, Muse in Muse Code, and Gemini in Antigravity. Each model runs in its own CLI. Two available models can still be useful. Record actual model identities and missing coverage. Each worker independently researches the full question. The lead coordinates and verifies material claims. It is not another independent vote.
 
 The lead must defend its recommendation. It can reject the majority if a stronger source or a real test proves the minority right. Do not average conflicting conclusions or invent a compromise to make every model happy.
+
+#### Example: the models disagree (made-up)
+
+This example is invented to show the pattern. The question was: "Where should the calisthenics coach store its exercise demo videos?"
+
+| Worker | Recommendation | What the lead found |
+| --- | --- | --- |
+| Claude | Cloudflare R2 for the clips, Cloudflare Stream for long videos. | Sources check out. Accepted. |
+| Codex | Cloudflare R2 only. Short clips do not need streaming. | Correct for clips under one minute. Accepted. |
+| Grok | Embed YouTube videos. It is free. | Rejected. Embeds show ads, need a connection at the gym, and can disappear when the creator removes them. |
+| Muse | Save the files on the Render server disk. | Rejected. By default, a Render service's filesystem is temporary. A deploy can delete the files. |
+| Gemini | Amazon S3. | Valid. It costs more for downloads than R2 for this use. Kept as the alternative. |
+
+Two models were wrong for different reasons. The majority did not decide. The lead checked each claim against a source and recommended R2 for clips, with Stream only if long videos arrive later.
 
 Read at least the executive summary, comparison, recommendation, security limits, and unresolved questions. Ask the lead to explain unfamiliar points. A confident report is not a product decision.
 
@@ -433,10 +448,10 @@ For a UI, use Impeccable to make mockups before agents build many pages. Then us
 
 ![Impeccable before code: context, direction cards, and a locked direction. After the build: audit, critique, polish, and delight.](assets/impeccable-loop.svg)
 
-An example for the habit tracker, based on Impeccable 4.8.2:
+An example for the calisthenics coach, based on Impeccable 4.8.2:
 
 1. Run `/impeccable init`. It asks about your users, brand, and tone. It saves the answers in `PRODUCT.md`.
-2. Ask for a screen, for example `/impeccable design the habit tracker home screen`. Impeccable "rolls" design directions, like dealing cards. The roll keeps each run from landing on the same default look. A decision page in the browser shows the cards:
+2. Ask for a screen, for example `/impeccable design the Today screen`. Impeccable "rolls" design directions, like dealing cards. The roll keeps each run from landing on the same default look. A decision page in the browser shows the cards:
    - **The roll**: the direction that the dice put first.
    - **Challengers**: directions from other design worlds. Impeccable rates each challenger against the roll. A weaker challenger can still lend one strength to the roll.
    - **Impeccable's pick**: its own top choice, when that differs from the roll.
@@ -444,6 +459,19 @@ An example for the habit tracker, based on Impeccable 4.8.2:
 3. If no card fits, re-roll. Ask for plain (a new hand), safer (more familiar), or bolder (less familiar). You can add a one-line steer, such as "warmer and less corporate."
 4. Lock one card. If image generation is available, the card has a mockup image. If not, it has an HTML sketch of the first screen. The locked card guides the build.
 5. Review the locked direction at desktop and phone sizes before agents build the pages.
+
+This is a real roll for the calisthenics coach Today screen:
+
+![The Impeccable decision page for the calisthenics coach: Route Topo is the roll, Gym Floor Blue is Impeccable's pick, Transit Diagram and Streaming Wall are challengers, and the category standard is on the right. Safer hand, Re-roll, and Bolder hand are at the bottom.](assets/impeccable-picker.jpg)
+
+- **The roll** dealt Route Topo. Each skill ladder is drawn as a climbing route, and each exercise is a pitch.
+- **Impeccable's pick** was Gym Floor Blue: dark cards and one blue for every action. Its risk line says it is the familiar choice.
+- **Two challengers** were competitive: Transit Diagram, where each ladder is a colored metro line, and Streaming Wall, where demos are poster tiles.
+- **Four challengers** were declined. Two still improved the roll: every ladder step shows its demo at the same scale, and hairline rules separate set rows.
+- **The category standard** is the usual white workout list with a blue button.
+- **The bar at the bottom** takes a one-line steer and offers a safer hand, a re-roll, or a bolder hand.
+
+Each card shows a sketch of the phone screen because this run had no image generation. With image generation, each card shows a full mockup image. Click **Build this** on the card you want.
 
 After the pages work, use Impeccable to clean them up:
 
@@ -482,7 +510,7 @@ For a new app, a small team might be:
 | Product manager | Clarify priorities and write human acceptance checks with you. |
 | Fresh reviewer | Review the completed change without the builder's conversation history. |
 
-Josh prefers explicit CTO, product-manager, and designer agents. Matthew uses similar roles when they help. They are workflow choices. One person or agent can cover several roles on a small task.
+Matthew uses explicit CTO, product-manager, and designer agents when they help. They are workflow choices. One person or agent can cover several roles on a small task.
 
 A **Git worktree** is another working folder linked to the same Git repository. Give each implementation agent its own branch and worktree. This reduces accidental edits to the same files. It is not a security boundary. Worktrees also do not automatically exist on another machine; a VPS needs its own clone and branches.
 
@@ -500,16 +528,16 @@ An agent can start helpers and receive reports even when they use different mode
 
 You do not need to become a programmer first. You do need enough understanding to ask whether the app does what you intended.
 
-| Concept | Example in a habit tracker |
+| Concept | Example in the calisthenics coach |
 | --- | --- |
-| Client or frontend | The page or mobile screen the person uses. It shows habits and collects input. |
+| Client or frontend | The page or mobile screen the person uses. It shows today's exercises and the set slots. |
 | Server or backend | Code that checks identity, enforces rules, and saves data. It runs on your host. |
-| API | A defined way for programs to request actions or data. A screen can call an API to record a completed habit. An agent can later call the same API. |
+| API | A defined way for programs to request actions or data. A screen can call an API to record a completed set. An agent can later call the same API. |
 | Request and response | The client sends a small data package, often JSON. The server returns a result or an error. |
 | Database | Persistent storage for structured records. A process's RAM and temporary files are not a reliable database. |
-| Data model | The important entities and their relationships: User owns Habit; Habit has Check-ins. |
-| Schema | The exact allowed structure: a check-in needs a habit ID and a date. A database schema also defines tables, fields, and constraints. |
-| Model in application code | A representation of data such as a `Habit`. This use of "model" differs from an AI model. |
+| Data model | The important entities and their relationships: a User has a Plan; a Plan has Sessions; a Session has Exercises; each completed set is a Set log. |
+| Schema | The exact allowed structure: a set log needs an exercise ID, a set number, and a date. A database schema also defines tables, fields, and constraints. |
+| Model in application code | A representation of data such as a `SetLog`. This use of "model" differs from an AI model. |
 | Migration | A controlled change to the database schema. It may affect existing records. |
 | Separation of concerns | Keep presentation, business rules, storage, and external integrations in clear parts. |
 | MVC | Model-view-controller: one way to separate data, presentation, and request handling. Modern stacks can use different names for similar responsibilities. |
@@ -517,15 +545,15 @@ You do not need to become a programmer first. You do need enough understanding t
 
 The frontend can do calculations and immediate input checks. The backend must still check permissions and validate important data. Anyone can modify a browser request. Hiding a button does not secure an API.
 
-Ask Diagram Design to show which data moves between the client, API, and database. Ask it to label who owns each record and which actions trigger writes. In the habit tracker, one user must not be able to fetch another user's private check-ins by changing an ID.
+Ask Diagram Design to show which data moves between the client, API, and database. Ask it to label who owns each record and which actions trigger writes. In the calisthenics coach, one user must not be able to fetch another user's workout logs by changing an ID.
 
 ### APIs, CLIs, and MCP use the same application rules
 
-If you use FastAPI, it can describe request and response schemas and publish an OpenAPI specification. That gives a CLI or another client a documented contract. A **CLI** can turn a task such as recording a habit into a command. An **MCP server** exposes selected tools through Model Context Protocol so a compatible agent can call them.
+If you use FastAPI, it can describe request and response schemas and publish an OpenAPI specification. That gives a CLI or another client a documented contract. A **CLI** can turn a task such as recording a completed set into a command. An **MCP server** exposes selected tools through Model Context Protocol so a compatible agent can call them.
 
 These interfaces should share the same application rules or call the same authorized API. They should not implement three different versions of the business logic. Stable operation names and typed payloads make integration easier. FastAPI does not automatically create a safe CLI or MCP server. Each still needs authentication, per-user authorization, validation, error handling, and tests. Do not expose every API operation as an agent tool by default. [FastAPI features](https://fastapi.tiangolo.com/features/).
 
-Matthew has started a separate task in Agentic Bootstrap to improve this scaffold. Do not wait for it or assume it has shipped. Ask your setup agent to check the current template's release and capabilities before using it.
+To start from the same foundation as Matthew, use his [Agentic Bootstrap scaffold](https://github.com/matthewliu/agentic-core). It saves about 30 minutes of setup. Ask your setup agent to read its README and run its bootstrap steps.
 
 ### Matthew's usual stack
 
@@ -533,7 +561,7 @@ This is Matthew's preference, not a requirement. You do not have to use Python o
 
 - **Python** for backend code. Matthew values its development speed and library support. Rust, Go, and TypeScript can also fit. Choose based on the product, team, hosting, and dependencies.
 - **FastAPI** for a documented, API-first backend. Typed request models can make later agent integrations easier. They do not supply authorization automatically.
-- **PostgreSQL** is Matthew's preferred database. Use it for the main records, such as users, habits, and check-ins. Keep development, preview, and production data separate.
+- **PostgreSQL** is Matthew's preferred database. Use it for the main records, such as users, workout plans, and set logs. Keep development, preview, and production data separate.
 - **Cloudflare** for static files such as images and videos. Matthew prefers [Cloudflare R2](https://developers.cloudflare.com/r2/) to store files. [Cloudflare Images](https://developers.cloudflare.com/images/) and [Cloudflare Stream](https://developers.cloudflare.com/stream/) can resize images and stream video. Alternatives include [Amazon S3](https://aws.amazon.com/s3/), Google Cloud Storage, and your host's own storage. Keep large files in file storage, not in the database. Save each file's address in the database.
 - **React** for browser interfaces. JavaScript and TypeScript are useful for interaction, animations, and browser behavior. A full JavaScript stack is a valid alternative.
 - **React Native with React Native Web**, often using Expo, when a shared mobile and web codebase is justified. Some features still need platform-specific code, testing, and store releases. Discuss this before assuming a native app.
@@ -555,6 +583,8 @@ python -m pip install -r requirements.txt
 The activation command above is for a POSIX shell. Ask the agent for the correct Windows command if needed. The requirements file must already be reviewed and appropriate for that project. Packages can run code during installation. Use maintained dependencies and a reproducible dependency lock. Do not copy a laptop's virtual environment to Linux. Recreate it on the target machine. Commit the dependency definitions, not `.venv`.
 
 ## 14. Use GitHub without losing your work
+
+![GitHub holds main and a feature branch. A pull request collects reviews from AI reviewers, Matthew, and a friend before the merge. On the laptop or VPS, each worktree folder holds one branch.](assets/github-flow.svg)
 
 **Git** tracks code versions on a computer. **GitHub** stores repositories online and adds collaboration, review, and automation. A **repository**, or repo, is the project's tracked files and history. Private repos still need careful credential handling.
 
@@ -583,6 +613,20 @@ After `/ce-work`, use **Herdr code review**, not Herdr research, to examine the 
 ![herdr-code-review: the lead gives the finished change to five fresh reviewers, then verifies their findings and retests accepted fixes.](assets/herdr-code-review-fanout.svg)
 
 The personal defaults can start `/herdr-code-review` automatically after CE work. Fresh models receive the same change, requirements, and test evidence. They report independently. The lead verifies findings, applies accepted fixes within its authority, and tests the changed result. It does not count the builder's own confidence as an independent review.
+
+#### Example: the reviewers disagree (made-up)
+
+This example is invented to show the pattern. The change was "tap a set slot to mark it done."
+
+| Reviewer | Finding | What the lead did |
+| --- | --- | --- |
+| Codex | Any signed-in user can mark another user's set by changing the ID in the request. | Wrote a test that tries it. The test failed. Fixed the server check. Accepted. |
+| Claude | The slot turns blue before the server saves. A failed save leaves the wrong state. | Accepted. The slot now changes only after the save succeeds. |
+| Gemini | A fast double tap can save the same set twice. | Grok said this cannot happen. The lead wrote a double-tap test. It saved twice. Accepted. |
+| Grok | Move the app to a different database. | Rejected. Out of scope for this change. |
+| Muse | Rename a variable. | Skipped. Style only. |
+
+Two reviewers disagreed about the double tap. A test settled it, not a vote. A teammate then read the PR and approved it.
 
 Have the lead record the exact reviewed commit or diff. New edits can invalidate a review. A missing reviewer is a coverage gap. A review is not permission to merge or deploy.
 
@@ -624,7 +668,7 @@ What is the deployment and rollback plan?
 List file-level details only where they help the reviewer.
 ```
 
-Read the executive summary and human next steps. Test the demo. Ask questions when the behavior differs from your intent. Do not merge only because several agents agreed.
+People can also review a PR. Add Matthew or a friend as a reviewer on GitHub. They can comment on a line, request changes, or approve. Read the executive summary and human next steps. Test the demo. Ask questions when the behavior differs from your intent. Do not merge only because several agents agreed.
 
 ### Merge and deploy are separate decisions
 
@@ -648,7 +692,7 @@ Matthew prefers ordinary product settings in a typed configuration module, a ver
 
 | Kind of value | Example | Usual place |
 | --- | --- | --- |
-| Product rule | Maximum habits allowed on a plan. | A documented configuration module or database. |
+| Product rule | Maximum saved workout plans on a free account. | A documented configuration module or database. |
 | User preference | A user's chosen display units. | The user's database record. |
 | Deployment setting | The server's port or environment name. | Host settings or environment variables. |
 | Secret | A provider API key or database password. | Secret manager, provider settings, or a protected local `.env`. |
@@ -665,7 +709,7 @@ An **access token** is a digital credential used instead of your password. Scope
 
 **Authentication** asks, "Who are you?" **Authorization** asks, "What are you allowed to access?" A valid Google login does not automatically give the user permission to see every record in your app.
 
-Use Google login through OpenID Connect with a maintained library. This runbook does not recommend Logto for new projects. Google identifies the person; your app must still enforce its own access rules. Avoid writing a password-storage or token-validation system from scratch. [Google OpenID Connect](https://developers.google.com/identity/openid-connect/openid-connect).
+Use Google login through OpenID Connect with a maintained library. Logto, an identity service, is another option. Matthew tried both and prefers Google login. Google identifies the person; your app must still enforce its own access rules. Avoid writing a password-storage or token-validation system from scratch. [Google OpenID Connect](https://developers.google.com/identity/openid-connect/openid-connect).
 
 For a Google web login, ask the agent to guide you through these actions. The agent should prepare the callback URLs and variable names before you open the console. It must not ask to see the client secret.
 
@@ -762,6 +806,8 @@ Keep the server's SSH key separate from laptop keys where possible. Do not mount
 ## 20. Understand Tailscale and SSH
 
 **SSH** is an encrypted connection to another computer. It can provide terminal access and control. **Tailscale** builds a private network among your approved devices. That network is called a **tailnet**. A mesh network lets devices reach one another without putting every service on a public address.
+
+![The laptop, phone, and VPS join one tailnet and connect through encrypted tunnels. Tailscale's coordination server shares keys only. A relay carries traffic when a direct path is blocked. GitHub, AI providers, and Render stay on the public internet.](assets/tailscale-mesh.svg)
 
 Tailscale provides encryption and access policy. Its normal service also uses a hosted account and coordination service. Some connections use encrypted relays when a direct connection is unavailable. It does not make your provider accounts or model calls self-hosted. Ask the agent to explain the actual path. [How Tailscale works](https://tailscale.com/how-it-works).
 

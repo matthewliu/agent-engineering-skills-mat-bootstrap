@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 760" role="img" aria-labelledby="github-flow-title github-flow-desc" id="github-flow-root">
+<title id="github-flow-title">How GitHub, branches, worktrees, and pull requests fit together</title><desc id="github-flow-desc">GitHub keeps the online copy of the repo. The main branch is the released line. A builder makes a branch, saves commits in its own worktree folder on a laptop or VPS, and pushes them to GitHub. A pull request asks to merge the branch into main. AI reviewers and team members such as Matthew or a friend comment, request changes, or approve. After approval the owner merges, and the host deploys from main.</desc>
+<defs>
+      <style>#github-flow-root { --paper:#f5f5f5;--ink:#2d3142;--muted:#4f5d75;--accent:#bf4520 }
+      #github-flow-root { font-family: Arial,sans-serif; }
+      #github-flow-root .title { font:30px Georgia,serif;fill:var(--ink) }
+      #github-flow-root .label { font:600 18px Arial,sans-serif;fill:var(--ink) }
+      #github-flow-root .name { font:600 15px Arial,sans-serif;fill:var(--ink) }
+      #github-flow-root .text { font:14px Arial,sans-serif;fill:var(--muted) }
+      #github-flow-root .cmd { font:600 13px ui-monospace,monospace;fill:var(--accent) }
+      #github-flow-root .tag { font:13px ui-monospace,monospace;fill:var(--muted) }
+      #github-flow-root .line { stroke:var(--muted);stroke-width:2;fill:none }</style><marker id="github-flow-next" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#4f5d75"/></marker></defs>
+<rect width="960" height="760" fill="#f5f5f5"/>
+<text x="40" y="48" class="title">GitHub: branch, commit, push, review, merge.</text>
+<text x="40" y="78" class="text">Agents do the typing. People review the pull request before anything reaches main.</text>
+<rect x="30" y="100" width="900" height="300" rx="8" fill="#ececec" stroke="#4f5d75"/>
+<text x="46" y="124" class="tag">GITHUB: THE SHARED ONLINE COPY</text>
+<path d="M80 330H910" stroke="#2d3142" stroke-width="4" fill="none"/>
+<text x="46" y="335" class="cmd">main</text>
+<circle cx="110" cy="330" r="9" fill="#f5f5f5" stroke="#2d3142" stroke-width="3"/>
+<circle cx="190" cy="330" r="9" fill="#f5f5f5" stroke="#2d3142" stroke-width="3"/>
+<circle cx="300" cy="330" r="9" fill="#f5f5f5" stroke="#2d3142" stroke-width="3"/>
+<circle cx="880" cy="330" r="9" fill="#f5f5f5" stroke="#2d3142" stroke-width="3"/>
+<text x="300" y="360" class="tag" text-anchor="middle">a teammate&#x27;s merged work</text>
+<path d="M190 330C220 330 220 262 260 262H730C780 262 790 330 820 330" stroke="#4f5d75" stroke-width="3" fill="none"/>
+<circle cx="300" cy="262" r="8" fill="#f5f5f5" stroke="#4f5d75" stroke-width="3"/>
+<text x="300" y="250" class="tag" text-anchor="middle">add set log</text>
+<circle cx="420" cy="262" r="8" fill="#f5f5f5" stroke="#4f5d75" stroke-width="3"/>
+<text x="420" y="250" class="tag" text-anchor="middle">show streak</text>
+<circle cx="540" cy="262" r="8" fill="#f5f5f5" stroke="#4f5d75" stroke-width="3"/>
+<text x="540" y="250" class="tag" text-anchor="middle">add tests</text>
+<circle cx="660" cy="262" r="8" fill="#f5f5f5" stroke="#4f5d75" stroke-width="3"/>
+<text x="660" y="250" class="tag" text-anchor="middle">fix review note</text>
+<circle cx="820" cy="330" r="11" fill="#bf4520"/>
+<text x="820" y="360" class="cmd" text-anchor="middle">merge</text>
+<text x="880" y="360" class="tag" text-anchor="middle">deploy</text>
+<rect x="250" y="136" width="560" height="96" rx="6" fill="#f5f5f5" stroke="#bf4520" stroke-width="2"/>
+<text x="266" y="160" class="tag">PULL REQUEST #12: feature/streaks INTO main</text>
+<text x="266" y="192" class="name">5 fresh AI reviewers</text>
+<text x="266" y="214" class="text">findings verified</text>
+<text x="446" y="192" class="name">Matthew (teammate)</text>
+<text x="446" y="214" class="text">requested a change</text>
+<text x="626" y="192" class="name">A friend (teammate)</text>
+<text x="626" y="214" class="text">approved</text>
+<rect x="30" y="430" width="900" height="200" rx="8" fill="#ececec" stroke="#4f5d75"/>
+<text x="566" y="454" class="tag">LAPTOP OR VPS: ONE CLONE, SEVERAL WORKTREES</text>
+<rect x="50" y="474" width="276" height="136" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="64" y="498" class="tag">WORKTREE 1</text>
+<text x="64" y="526" class="name">calisthenics-coach/</text>
+<text x="64" y="554" class="text">Branch: main.</text>
+<text x="64" y="576" class="text">Pull to stay current.</text>
+<rect x="342" y="474" width="276" height="136" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="356" y="498" class="tag">WORKTREE 2</text>
+<text x="356" y="526" class="name">calisthenics-coach-streaks/</text>
+<text x="356" y="554" class="text">Branch: feature/streaks.</text>
+<text x="356" y="576" class="text">Builder agent A works here.</text>
+<rect x="634" y="474" width="276" height="136" rx="6" fill="#f5f5f5" stroke="#4f5d75"/>
+<text x="648" y="498" class="tag">WORKTREE 3</text>
+<text x="648" y="526" class="name">calisthenics-coach-video/</text>
+<text x="648" y="554" class="text">Branch: feature/video.</text>
+<text x="648" y="576" class="text">Builder agent B. Its own PR.</text>
+<path d="M110 342V472" class="line" marker-end="url(#github-flow-next)"/>
+<text x="122" y="412" class="cmd">pull</text>
+<path d="M540 472V274" class="line" marker-end="url(#github-flow-next)"/>
+<text x="552" y="412" class="cmd">push</text>
+<text x="40" y="668" class="text">Commit: a saved snapshot of changes. Branch: a named line of commits. main: the line that gets released.</text>
+<text x="40" y="692" class="text">Worktree: a separate folder for one branch on one machine, so two agents do not edit the same files.</text>
+<text x="40" y="716" class="text">Push: upload commits to GitHub. Pull request (PR): ask to merge a branch into main and get reviews.</text>
+<text x="40" y="740" class="text">Merge: combine the approved branch into main. Only the owner, or someone the owner trusts, merges.</text>
+</svg>
