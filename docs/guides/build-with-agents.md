@@ -36,7 +36,7 @@ A **skill** is a reusable set of instructions for an agent. These libraries give
 | --- | --- | --- |
 | [Compound Engineering](https://github.com/EveryInc/compound-engineering-plugin) | Plans, builds, reviews, and ships code. Commands include `/ce-brainstorm`, `/ce-plan`, `/ce-work`, `/ce-code-review`, and `/ce-commit-push-pr`. | Plan, build, review |
 | [Impeccable](https://github.com/pbakaus/impeccable) | Design. Makes mockup directions for you to choose from before code. After the build, `audit`, `polish`, and `delight` clean up the interface. | Scope, build, review |
-| [Matthew's public skills](https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap) | `/herdr-research`, `/herdr-code-review`, `/feature-research`, `/research-synthesis`, `/product-spec`, `/architecture-review`, `/security-audit`, and his engineering preferences. No invitation is needed. | Research, scope, review |
+| [Matthew's public skills](https://github.com/matthewliu/matt-agent-playbook) | `/herdr-research`, `/herdr-code-review`, `/feature-research`, `/research-synthesis`, `/product-spec`, `/architecture-review`, `/security-audit`, and his engineering preferences. No invitation is needed. | Research, scope, review |
 | [Diagram Design](https://github.com/cathrynlavery/diagram-design) | System diagrams, data flows, data models, and charts. | Plan, documentation |
 | [Cloudflare security audit](https://github.com/cloudflare/security-audit-skill) | Source and dependency security review. It does not certify the result as safe. | Review |
 | [Herdr](https://herdr.dev/) | Not a skill. A desktop app and background service that shows and runs many agents across projects and machines. | Every step |
@@ -108,7 +108,7 @@ First inspect my operating system, processor type, installed tools, and the proj
 
 Start with the local setup. Check Claude Code, Codex, and Cursor. Install the coding CLIs I choose, Git, GitHub CLI, the current Herdr desktop app and herdr-core, and Tailscale. Set up browser access from the official vendor pages. Do not confuse an IDE extension with a browser-control extension.
 
-Install Compound Engineering, Impeccable, Diagram Design, and Cloudflare's security-audit skill. Use https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap for Matthew's public reusable skills. No invitation is needed. Preserve existing instructions and skills. Resolve duplicate skill names before installation. Install the selected tools on each machine where agents will run. Let me complete sign-in in the official browser flow.
+Install Compound Engineering, Impeccable, Diagram Design, and Cloudflare's security-audit skill. Use https://github.com/matthewliu/matt-agent-playbook for Matthew's public reusable skills. No invitation is needed. Preserve existing instructions and skills. Resolve duplicate skill names before installation. Install the selected tools on each machine where agents will run. Let me complete sign-in in the official browser flow.
 
 Do not buy a subscription, create a paid server, change firewall or SSH settings, or publish an app without explaining the action and getting my approval. Never ask me to paste passwords, private keys, recovery codes, or API secrets into this chat. Use the provider's sign-in flow or secret settings.
 
@@ -331,14 +331,14 @@ New sessions normally load updated instructions. Existing sessions may need an e
 Use this public repository:
 
 ```text
-https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap
+https://github.com/matthewliu/matt-agent-playbook
 ```
 
 Your setup agent can clone it without an invitation:
 
 ```bash
-git clone https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap.git
-cd agent-engineering-skills-matt-bootstrap
+git clone https://github.com/matthewliu/matt-agent-playbook.git
+cd matt-agent-playbook
 ```
 
 Read its instructions and installer before running anything. The current installer is `bash scripts/install.sh`. The optional `python3 scripts/install-personal-herdr.py` adds the personal Herdr defaults. It backs up existing instruction files. Ask before replacing your existing preferences. Confirm that the public profile describes you, not Matthew.

@@ -1,4 +1,4 @@
-# Agent engineering skills: Matthew's bootstrap
+# Matt's agent playbook
 
 A public starter for friends who want to build software with coding agents. Start with the [step-by-step runbook](docs/guides/build-with-agents.md). You can attach that Markdown file to a local coding agent without reading it first. The agent must explain each stage and ask for your decisions.
 
@@ -11,8 +11,8 @@ Anyone can read or clone this public repo. You cannot push to it without a separ
 Ask your setup agent to inspect the installer and your existing skills first. Use your own accounts and directories. Do not install from a search advertisement or an unrelated package with the same name.
 
 ```bash
-git clone https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap.git
-cd agent-engineering-skills-matt-bootstrap
+git clone https://github.com/matthewliu/matt-agent-playbook.git
+cd matt-agent-playbook
 bash scripts/install.sh --dry-run
 bash scripts/install.sh
 ```
