@@ -39,7 +39,7 @@ A **skill** is a reusable set of instructions for an agent. These libraries give
 | [Matthew's public skills](https://github.com/matthewliu/agent-engineering-skills-matt-bootstrap) | `/herdr-research`, `/herdr-code-review`, `/feature-research`, `/research-synthesis`, `/product-spec`, `/architecture-review`, `/security-audit`, and his engineering preferences. No invitation is needed. | Research, scope, review |
 | [Diagram Design](https://github.com/cathrynlavery/diagram-design) | System diagrams, data flows, data models, and charts. | Plan, documentation |
 | [Cloudflare security audit](https://github.com/cloudflare/security-audit-skill) | Source and dependency security review. It does not certify the result as safe. | Review |
-| [Agentic Bootstrap](https://github.com/matthewliu/agentic-core) | Not a skill. Matthew's starter scaffold for a new app with his stack. It saves about 30 minutes of setup if you want the same starting foundation. | Build |
+| [Agentic Bootstrap](https://github.com/matthewliu/matt-agentic-app-bootstrap) | Not a skill. Matthew's starter scaffold for a new app with his stack. It saves about 30 minutes of setup if you want the same starting foundation. | Build |
 | [Herdr](https://herdr.dev/) | Not a skill. A desktop app and background service that shows and runs many agents across projects and machines. | Every step |
 
 ![The six workflow steps, with the commands Matthew uses in each step.](assets/workflow-commands.svg)
@@ -553,7 +553,7 @@ If you use FastAPI, it can describe request and response schemas and publish an 
 
 These interfaces should share the same application rules or call the same authorized API. They should not implement three different versions of the business logic. Stable operation names and typed payloads make integration easier. FastAPI does not automatically create a safe CLI or MCP server. Each still needs authentication, per-user authorization, validation, error handling, and tests. Do not expose every API operation as an agent tool by default. [FastAPI features](https://fastapi.tiangolo.com/features/).
 
-To start from the same foundation as Matthew, use his [Agentic Bootstrap scaffold](https://github.com/matthewliu/agentic-core). It saves about 30 minutes of setup. Ask your setup agent to read its README and run its bootstrap steps.
+To start from the same foundation as Matthew, use his [Agentic Bootstrap scaffold](https://github.com/matthewliu/matt-agentic-app-bootstrap). It saves about 30 minutes of setup. Ask your setup agent to read its README and run its bootstrap steps.
 
 ### Matthew's usual stack
 
