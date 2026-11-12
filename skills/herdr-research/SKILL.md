@@ -7,7 +7,7 @@ description: "When the user wants independent research on the same question from
 
 Make the current agent the lead. Start fresh research agents in separate Herdr terminals. Give every agent the same research brief. Each agent researches the whole question independently. The lead compares their completed reports and checks the evidence that affects the decision.
 
-This skill coordinates `feature-research` and `research-synthesis`. Load those skills before launch. Do not copy their research or synthesis procedures into this skill. Use `security-audit` when the user requests an audit. Use `diagram-design` with its default style when a diagram is needed, unless the user chose another style. Require `/ce-noslop` in edit mode before delivery.
+This skill coordinates `feature-research` and `research-synthesis`. Load those skills before launch. Do not copy their research or synthesis procedures into this skill. Use `security-audit` when the user requests an audit. Use the project's `diagram-design` profile when a diagram is needed. Require `/ce-noslop` in edit mode before delivery.
 
 Do not divide the research question among models. Do not assign separate products, technical areas, or security duties to different agents. A divided assignment is a different workflow. If the user asks for that workflow, state the difference and agree its scope first.
 
@@ -53,11 +53,11 @@ Use the existing daemon. Do not restart, replace, update, or stop it. A remote m
 
 Check the installed CLIs and their supported model choices without starting a model session. Honor explicit model choices. Otherwise use each CLI's configured default and ask the worker to report its runtime model identity. Do not invent a model version from the CLI name. Record aliases and unresolved identity separately.
 
-Before creating worker terminals, try to name the lead's own terminal `<feature-slug>-<lead-model-slug>-lead`. Use the lead's actual model identity and the model slug rules in `feature-research`. Set the visible tab label and a unique Herdr agent name as described in the launch reference. If the model identity is unresolved, use the known CLI name for a provisional label and record that limit. A naming failure must not restart the lead or stop otherwise safe research. Report the failure.
+Before creating worker terminals, name the lead's visible tab `<feature-slug>-<model-slug>-lead` when that tab contains only the lead. Use the lead's actual model identity and the model slug rules in `feature-research`. Follow the launch reference for the current Herdr core or legacy daemon. If the model identity is unresolved, use the known CLI name for a provisional label and record that limit. A naming failure must not restart the lead or stop otherwise safe research. Report the failure.
 
 Use guarded provider permissions by default. Use the shared launch reference's unattended arguments only after the current owner explicitly chooses that mode. The lead can accept trust for the assigned checkout and handle already authorized tool prompts. Keep the worker's research-only task limits.
 
-Create one new terminal tab per worker. Label it `<feature-slug>-<worker>-research`, where `<worker>` identifies the CLI or selected model. Use a short unique Herdr agent name that fits the installed name limit. Preserve user focus. Keep the returned machine, session, workspace, tab, pane, and terminal identifiers.
+Create one new terminal tab per worker. Name it `<feature-slug>-<model-slug>-research`. Use the actual model when known; otherwise use the CLI name and update the tab after the model is confirmed. Give the core terminal or legacy agent a short unique name that fits its limit. Read back each visible tab name before sending the brief. Preserve user focus. Keep the returned machine, session, workspace, tab, pane, and terminal identifiers.
 
 Start fresh conversations. Do not reuse agents from earlier research or implementation. Open the team terminals before distributing research. A failed launch must not prevent ready workers from starting once the team status is known. Check state before retrying a failed launch. Do not create duplicate agents after an ambiguous timeout.
 

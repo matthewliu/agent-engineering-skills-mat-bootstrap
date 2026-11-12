@@ -41,7 +41,7 @@ Do not combine `--machine` with `--session`. Do not reuse local pane identifiers
 
 Use the verified caller's pane, tab, and terminal identity. Recheck `agent get` and `tab get` before renaming. Do not rename the focused tab unless it is the verified caller's tab.
 
-Form `<feature-slug>-<lead-model-slug>-lead` from the agreed feature and the lead's actual model identity. Use the `feature-research` model slug rules. If only the CLI name is known, use it for a provisional label. Record the unresolved model identity and update the label when the identity is known.
+Form `<feature-slug>-<lead-model-slug>-lead` from the agreed feature and the lead's actual model identity. Use the `feature-research` model slug rules. If only the CLI name is known, use it for a provisional label. Record the unresolved model identity and update the label when the identity is known. Use the same pattern for code review leads.
 
 ```text
 herdr <verified-server-selector> tab rename <caller-tab-id> <feature-model-lead>
@@ -57,10 +57,10 @@ If the tab contains other agents, keep its shared label and rename only the lead
 Inspect `herdr tab create --help`, `herdr agent start --help`, and the provider CLI's help. Use argument arrays when the host tool supports them. When a shell is required, quote each argument with proper shell quoting. Do not interpolate a prompt, path, model label, or source text into shell code.
 
 ```text
-herdr <verified-server-selector> tab create --workspace <workspace-id> --cwd <checkout> --label <feature-worker-research> --no-focus
+herdr <verified-server-selector> tab create --workspace <workspace-id> --cwd <checkout> --label <feature-model-role> --no-focus
 ```
 
-Read `.result.tab.tab_id` and `.result.root_pane.pane_id` from the returned JSON. Record the returned terminal identity from the pane metadata. Do not derive identifiers from sidebar order or a naming pattern.
+Use `research` or `review` for `<role>`. Use the actual model slug when known, or the CLI name until the model is confirmed. Read `.result.tab.tab_id` and `.result.root_pane.pane_id` from the returned JSON. Record the returned terminal identity from the pane metadata. Read back the tab label and agent name before sending the brief. Do not derive identifiers from sidebar order or a naming pattern.
 
 Confirm that the new pane contains an interactive shell before launch:
 

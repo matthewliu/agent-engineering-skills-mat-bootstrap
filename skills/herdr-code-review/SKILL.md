@@ -9,7 +9,7 @@ Keep the current agent as lead. Start fresh reviewer conversations in separate H
 
 This skill replaces `cloud-agent-pr-review`. It keeps that workflow's review criteria and evidence checks. It uses visible Herdr workers and supports a local implementation before a PR exists. Read [references/review-method.md](references/review-method.md) for the common inputs, criteria, severity rules, and fix checks. Do not start a second review panel.
 
-Use [the Herdr launch reference](../herdr-research/references/herdr-launch.md) for connection recovery, fresh terminals, explicit targets, permissions, submission, and failure handling. It also applies to review workers. Replace research terminal labels with `<feature-slug>-<worker>-review`. Do not launch a research task through `herdr-research`.
+Use [the Herdr launch reference](../herdr-research/references/herdr-launch.md) for connection recovery, fresh terminals, explicit targets, permissions, submission, and failure handling. It also applies to review workers. Name the lead's own tab `<feature-slug>-<model-slug>-lead` when the tab contains only the lead. Name each reviewer tab `<feature-slug>-<model-slug>-review`. Use the actual model when known; otherwise use the CLI name and update the tab after confirmation. Read back the visible names before sending the review brief. Do not launch a research task through `herdr-research`.
 
 ## Automatic review after CE work
 
